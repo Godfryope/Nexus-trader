@@ -1,37 +1,3 @@
-<?php
-require '/var/www/html/bitrader/User.php'; // Include the User model
-
-// Initialize DatabaseConnection
-$dbConnection = new DatabaseConnection();
-$userModel = new User($dbConnection);
-
-// Initialize username variable
-$username = ''; // Initialize to an empty string
-
-// Example of creating a user
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    if ($userModel->createUser($username, $email, $password)) {
-        echo "User created successfully!";
-    } else {
-        echo "Failed to create user.";
-    }
-}
-
-// Example of finding a user by email
-$emailToFind = "test@example.com"; // Replace with dynamic input
-$user = $userModel->findUserByEmail($emailToFind);
-if ($user) {
-    $username = $user['username']; // Assign the username if user is found
-} else {
-    $username = "User not found."; // Fallback message if user is not found
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="dark" data-toggled="close">
 
