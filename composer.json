@@ -1,0 +1,8 @@
+{
+    "require": {
+        "firebase/php-jwt": "^6.10",
+        "flutterwavedev/flutterwave-v3": "^1.0",
+        "vlucas/phpdotenv": "^5.6",
+        "google/apiclient": "^2.17"
+    }
+}

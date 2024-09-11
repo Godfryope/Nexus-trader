@@ -16,19 +16,39 @@ window.addEventListener('load', function () {
 
 const moon = document.getElementById('btnSwitch');
 const icon = document.querySelector('#btnSwitch img');
-moon.addEventListener('click', () => {
-    const theme = document.documentElement.getAttribute('data-bs-theme');
-    document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'light' : 'dark');
+
+
+
+// On page load: check for stored theme or default to 'dark'
+window.addEventListener('load', () => {
+    const storedTheme = localStorage.getItem('theme') || 'dark';  // Default to 'dark'
+    toggleTheme(storedTheme);
+});
+
+// Function to change the theme and icon
+function toggleTheme(theme) {
+    document.documentElement.setAttribute('data-bs-theme', theme);
     if (theme === 'light') {
-        icon.src = 'assets/images/icon/sun.svg';
-        moon.style.backgroundColor = 'white';
-    } else {
         icon.src = 'assets/images/icon/moon.svg';
         moon.style.backgroundColor = '#00D094';
+    } else {
+        icon.src = 'assets/images/icon/sun.svg';
+        moon.style.backgroundColor = 'white';
     }
-
     changeImage();
+}
+
+// On button click: switch between themes
+moon.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    toggleTheme(newTheme);
+    
+    // Optional: Store the theme so it persists on reload
+    localStorage.setItem('theme', newTheme);
 });
+
 // =================== light and dark end ================== //
 
 
