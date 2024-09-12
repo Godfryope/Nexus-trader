@@ -1064,55 +1064,12 @@
                         <!-- Start::slide__category -->
                         <li class="slide__category"><span class="category-name">Main</span></li>
                         <!-- End::slide__category -->
-
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
+                        <li class="slide">
+                            <a href="./dashboard.php" class="side-menu__item">
                                 <i class="bx bx-home side-menu__icon"></i>
-                                <span class="side-menu__label">Dashboards<span class="badge bg-warning-transparent ms-2">12</span></span>
-                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                                <span class="side-menu__label">Home</span>
                             </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide side-menu__label1">
-                                    <a href="javascript:void(0)">Dashboards</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index.html" class="side-menu__item">CRM</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-1.html" class="side-menu__item">Ecommerce</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-2.html" class="side-menu__item">Crypto</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-3.html" class="side-menu__item">Jobs</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-4.html" class="side-menu__item">NFT</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-5.html" class="side-menu__item">Sales</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-6.html" class="side-menu__item">Analytics</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-7.html" class="side-menu__item">Projects</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-8.html" class="side-menu__item">HRM</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-9.html" class="side-menu__item">Stocks</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-10.html" class="side-menu__item">Courses</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="index-11.html" class="side-menu__item">Personal</a>
-                                </li>
-                            </ul>
                         </li>
                         <!-- End::slide -->
 
@@ -1121,7 +1078,7 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
+                        <!-- <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
                                 <i class="bx bx-file-blank side-menu__icon"></i>
                                 <span class="side-menu__label">Pages<span class="badge bg-secondary-transparent ms-2">New</span></span>
@@ -1267,11 +1224,11 @@
                                     <a href="to-do-list.html" class="side-menu__item">To Do List</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- End::slide -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
+                        <!-- <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
                                 <i class="bx bx-task side-menu__icon"></i>
                                 <span class="side-menu__label">Task<span class="badge bg-secondary-transparent ms-2">New</span></span>
@@ -1291,7 +1248,7 @@
                                     <a href="task-details.html" class="side-menu__item">Task Details</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- End::slide -->
 
                         <!-- Start::slide -->
@@ -1388,7 +1345,7 @@
                         <!-- End::slide -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
+                        <!-- <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
                                 <i class="bx bx-error side-menu__icon"></i>
                                 <span class="side-menu__label">Error</span>
@@ -1408,7 +1365,7 @@
                                     <a href="500-error.html" class="side-menu__item">500 - Error</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- End::slide -->
 
                         <!-- Start::slide__category -->
@@ -2062,32 +2019,48 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- <div class="col-xl-4 col-xl-4 col-lg-12">
+                                <div class="rounded p-3 bg-light">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="lh-1">
+                                            <span class="avatar bg-secondary-transparent">
+                                                <i class="ti ti-wallet fs-20"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="d-block text-muted">Wallet Balance</span>
+                                            <span class="d-block fw-semibold">12.5232 <span class="fs-12 text-muted fw-normal">BTC</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
                             <div class="col-xxl-4 col-xl-4 col-lg-12">
                                 <div class="card custom-card">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-4">
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-2">
-                                                    <span class="avatar avatar-md avatar-rounded bg-light p-2">
-                                                        <img src="../assets/images/crypto-currencies/regular/Dash.svg" alt="">
-                                                    </span>
-                                                </div>
-                                                <div class="mb-0 fw-semibold">
-                                                    Dash - DASH
-                                                </div>
+                                        <div class="d-flex align-items-center gap-3">
+                                                <div class="lh-1">
+                                                <span class="avatar bg-secondary-transparent">
+                                                    <i class="ti ti-wallet fs-20"></i>
+                                                </span>
                                             </div>
-                                            <div class="ms-auto">
+                                            <div>
+                                                <span class="mb-0 fw-semibold"">Wallet Balance</span>
+                                                <!-- <span class="d-block fw-semibold">12.5232 <span class="fs-12 text-muted fw-normal">BTC</span></span> -->
+                                            </div>
+                                            </div>
+                                            <!-- <div class="ms-auto">
                                                 <div id="dash-chart"></div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="d-flex align-items-end">
                                             <div>
-                                                <p class="mb-1">DASH / USD</p>
-                                                <p class="fs-20 mb-0 fw-semibold lh-1 text-primary">$26,345.000</p>
+                                                <!-- <p class="mb-1">DASH / USD</p> -->
+                                                <p class="fs-20 mb-0 fw-semibold lh-1 text-primary">$10,000.00</p>
                                             </div>
                                             <div class="ms-auto text-end">
                                                 <p class="mb-0">$12.32</p>
-                                                <p class="mb-0 text-muted"><span class="text-muted">Vol:</span>(+112.95%)</p>
+                                                <!-- <p class="mb-0 text-muted"><span class="text-muted">Vol:</span>(+112.95%)</p> -->
                                             </div>
                                         </div>
                                     </div>

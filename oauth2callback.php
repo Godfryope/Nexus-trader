@@ -57,7 +57,7 @@ if (isset($_GET['code'])) {
                 'role' => $user['role'],
                 'created_at' => $user['created_at']
             ];
-            header("Location: ./views/dashboard/html/index-2.php?username=");
+            header("Location: ./views/dashboard/html/dashboard.php");
             exit();
         } else {
             // Create new user
@@ -73,7 +73,7 @@ if (isset($_GET['code'])) {
                 'created_at' => date('Y-m-d H:i:s') // Current timestamp
             ];
 
-            header("Location: success.php");
+            header("Location: ./views/dashboard/html/dashboard.php");
             exit();
         }
     } else {
