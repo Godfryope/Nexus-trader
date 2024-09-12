@@ -4,7 +4,7 @@ error_reporting(E_ALL); // Report all types of errors
 ini_set('display_errors', '1'); // Display errors on the screen
 
 // Include database connection
-require_once 'config/db.php'; // Ensure you have db.php with your DB credentials
+require_once '/var/www/html/bitrader/config/db.php'; // Ensure you have db.php with your DB credentials
 
 // Ensure PDO instance is available
 if (!isset($pdo)) {

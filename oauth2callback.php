@@ -29,39 +29,59 @@ $client->setRedirectUri($_ENV['GOOGLE_REDIRECT_URI']);
 $client->addScope('email');
 $client->addScope('profile');
 
-// Create User instance
-$userModel = new User($pdo);
+// Create GoogleAuth instance
 $googleAuth = new GoogleAuth($client);
 
 // Authenticate user
 if (isset($_GET['code'])) {
+    // This step fetches user data from Google after authorization
     $userData = $googleAuth->handleGoogleCallback($pdo);
     
     if ($userData) {
         $username = $userData['username'];
         $email = $userData['email'];
+        $profile_picture = $userData['profile_picture'];
+
+        // Create User instance
+        $userModel = new User($pdo);
 
         // Check if the user already exists in the database
         $user = $userModel->findUserByEmail($email);
 
         if ($user) {
-            // User already exists, log them in
-            $_SESSION['username'] = $user['username'];
-            header("Location: ./dashboard/html/index-2.php?username=" . urlencode($user['username']));
+            // Log them in
+            $_SESSION['user_data'] = [
+                'username' => $user['username'],
+                'email' => $user['email'],
+                'profile_picture' => $user['profile_picture'],
+                'role' => $user['role'],
+                'created_at' => $user['created_at']
+            ];
+            header("Location: ./views/dashboard/html/index-2.php?username=");
             exit();
         } else {
-            // User doesn't exist, create a new user in the database
+            // Create new user
             $random_password = bin2hex(random_bytes(8)); // Generate random password
-            $userModel->createUser($username, $email, $random_password); // Insert user with hashed password
+            $userModel->createUser($username, $email, $random_password);
 
-            // Log the user in
-            $_SESSION['username'] = $username;
-            header("Location: success.php?username=" . urlencode($username));
+            // Store user data in session
+            $_SESSION['user_data'] = [
+                'username' => $username,
+                'email' => $email,
+                'profile_picture' => $profile_picture,  // Include Google profile picture
+                'role' => 'user', // Default role
+                'created_at' => date('Y-m-d H:i:s') // Current timestamp
+            ];
+
+            header("Location: success.php");
             exit();
         }
+    } else {
+        // If user data is not returned, handle the error accordingly
+        die("Failed to retrieve user data from Google.");
     }
 } else {
-    // If no authorization code, redirect to Google authentication
+    // Redirect to Google login if no authorization code is provided
     $googleAuth->redirectToGoogle();
 }
 ?>

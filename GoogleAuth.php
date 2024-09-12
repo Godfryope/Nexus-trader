@@ -1,54 +1,40 @@
 <?php
+
 class GoogleAuth {
     private $client;
 
-    public function __construct($client) {
+    public function __construct(Google_Client $client) {
         $this->client = $client;
     }
 
-    // Redirect to Google authentication
+    // Method to redirect to Google's OAuth page
     public function redirectToGoogle() {
-        $auth_url = $this->client->createAuthUrl();
-        header("Location: " . filter_var($auth_url, FILTER_SANITIZE_URL));
+        $authUrl = $this->client->createAuthUrl();
+        header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
         exit();
     }
 
-    // Handle Google authentication
+    // Method to handle the Google callback and fetch user data
     public function handleGoogleCallback($pdo) {
-        error_log("Handling Google callback...");
-
         if (isset($_GET['code'])) {
-            error_log("Authorization code received: " . $_GET['code']);
+            $this->client->authenticate($_GET['code']);
+            $token = $this->client->getAccessToken();
+            $this->client->setAccessToken($token);
 
-            // Fetch the access token
-            $token = $this->client->fetchAccessTokenWithAuthCode($_GET['code']);
+            // Fetch user profile from Google
+            $google_oauth = new Google_Service_Oauth2($this->client);
+            $google_account_info = $google_oauth->userinfo->get();
+            
+            $userData = [
+                'username' => $google_account_info->name,
+                'email' => $google_account_info->email,
+                'profile_picture' => $google_account_info->picture
+            ];
 
-            if (isset($token['error'])) {
-                error_log("Error fetching access token: " . $token['error_description']);
-                return null;
-            }
-
-            // Set the access token
-            $this->client->setAccessToken($token['access_token']);
-            error_log("Access token set.");
-
-            // Get user profile information
-            try {
-                $google_oauth = new Google_Service_Oauth2($this->client);
-                $user_info = $google_oauth->userinfo->get();
-                error_log("User info retrieved: " . json_encode($user_info));
-
-                return [
-                    'username' => $user_info->name,
-                    'email' => $user_info->email
-                ];
-            } catch (Exception $e) {
-                error_log("Error fetching user info: " . $e->getMessage());
-                return null;
-            }
+            return $userData;
         }
-        error_log("No authorization code provided.");
         return null;
     }
 }
+
 ?>

@@ -51,7 +51,7 @@ class AuthController {
 
     // Method to handle the redirection after successful login
     private function redirectToSuccess($username) {
-        header("Location: ./dashboard/html/index-2.php?username=" . urlencode($username));
+        header("Location: ./views/dashboard/html/index-2.php?username=" . urlencode($username));
         exit();
     }
 }
